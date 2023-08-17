@@ -1,7 +1,10 @@
 #See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-focal AS base
 WORKDIR /app
+ENV TZ=America/Sao_Paulo
+RUN cat /usr/share/zoneinfo/$TZ > /etc/localtime \
+&& cat /usr/share/zoneinfo/$TZ > /etc/timezone
 EXPOSE 80
 EXPOSE 443
 
