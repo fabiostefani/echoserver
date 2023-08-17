@@ -2,7 +2,7 @@
 @{
     Layout = "app/_Layout";
 
-    var appName = System.Environment.GetEnvironmentVariable("APP_NAME");
+    var appName = System.Environment.GetEnvironmentVariable("APP_NAME") + " Fabio"; 
     appName = string.IsNullOrWhiteSpace(appName) ? "Echo" : appName;
 
     var headerColor = System.Environment.GetEnvironmentVariable("HEADER_COLOR");

@@ -15,7 +15,6 @@ namespace EchoServer.Controllers
             _logger = logger;
         }
 
-        private bool Accept(string format) => this.Request.Headers["Accept"].FirstOrDefault()?.Contains(format) ?? false;
 
         public async Task<IActionResult> Index()
         {
@@ -26,6 +25,9 @@ namespace EchoServer.Controllers
             else
                 return this.View();
         }
+
+        private bool Accept(string format)
+            => this.Request.Headers["Accept"].FirstOrDefault()?.Contains(format) ?? false;
 
         public IActionResult IndexHtml()
         {
@@ -38,7 +40,7 @@ namespace EchoServer.Controllers
 
         public async Task<IActionResult> IndexJsonAsync()
         {
-            var appName = System.Environment.GetEnvironmentVariable("APP_NAME");
+            var appName = System.Environment.GetEnvironmentVariable("APP_NAME") + " Fabio";
             appName = string.IsNullOrWhiteSpace(appName) ? "Echo" : appName;
 
             JObject returnValue = new JObject();
